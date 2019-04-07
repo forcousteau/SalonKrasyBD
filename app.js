@@ -46,29 +46,29 @@ app.use(express.static(path.join(__dirname, 'public'))); // configure express to
 app.use(fileUpload()); // configure fileupload
 
 // routes for the app
-app.get('/login', function(request, response) {
-	response.sendFile(path.join(__dirname + '/views/login.html'));
-});
-app.post('/auth', function(request, response) {
-	var username = request.body.username;
-	var password = request.body.password;
-	if (username && password) {
-    console.log('SELECT * FROM Beauty.Managers WHERE employee_id = ? AND password = ?;', [username, password]);
-		connection.query('SELECT * FROM Beauty.Managers WHERE employee_id = '+username+' AND password = '+password+';', function(error, results, fields) {
-			if (results.length > 0) {
-				request.session.loggedin = true;
-				request.session.username = username;
-				response.redirect('/');
-			} else {
-				response.send('Incorrect Username and/or Password!');
-			}			
-			response.end();
-		});
-	} else {
-		response.send('Please enter Username and Password!');
-		response.end();
-	}
-});
+// app.get('/login', function(request, response) {
+// 	response.sendFile(path.join(__dirname + '/views/login.html'));
+// });
+// app.post('/auth', function(request, response) {
+// 	var username = request.body.username;
+// 	var password = request.body.password;
+// 	if (username && password) {
+//     console.log('SELECT * FROM Beauty.Managers WHERE employee_id = ? AND password = ?;', [username, password]);
+// 		connection.query('SELECT * FROM Beauty.Managers WHERE employee_id = '+username+' AND password = '+password+';', function(error, results, fields) {
+// 			if (results.length > 0) {
+// 				request.session.loggedin = true;
+// 				request.session.username = username;
+// 				response.redirect('/');
+// 			} else {
+// 				response.send('Incorrect Username and/or Password!');
+// 			}			
+// 			response.end();
+// 		});
+// 	} else {
+// 		response.send('Please enter Username and Password!');
+// 		response.end();
+// 	}
+// });
 app.get('/', getHomePage);
 app.get('/team', getTeamPage);
 app.get('/add', addServicePage);
