@@ -1,0 +1,58 @@
+<% include partials/header.ejs %>
+<div class="container">
+    <% if (message) { %>
+        <p class="text-center text-danger"><%= message %></p>
+    <% } %>
+    <% if (employee) { %>
+        <form class="add-employee-form" action="" method="post" enctype="multipart/form-data">
+            <div class="form-row">
+                <div class="form-group col-md-4">
+                    <label for="employee-id">ID</label>
+                    <input type="text" class="form-control" name="employee_id" id="employee-id" value="<%= employee.employee_id %>" required disabled title="ID cannot be edited.">
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="first-name">First Name</label>
+                    <input type="text" class="form-control" name="first_name" id="first-name" value="<%= employee.first_name %>" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="surname">Last Name</label>
+                    <input type="text" class="form-control" name="surname" id="surname" value="<%= employee.surname %>" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="patronymic">Patronymic</label>
+                    <input type="text" class="form-control" name="patronymic" id="patronymic" value="<%= employee.patronymic %>" required>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" name="password" id="password" required>
+                </div>
+
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="phone-num">Phone Number</label>
+                    <input type="tel" class="form-control" name="phone_num" id="phone-num" placeholder="+380123456789" value="<%= employee.phone_num %>" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="experience">Experience</label>
+                    <input type="number" class="form-control" name="experience" id="experience" placeholder="Experience" value="<%= employee.experience %>" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="salary">Salary</label>
+                    <input type="number" class="form-control" name="salary" id="salary" placeholder="Salary" value="<%= employee.salary %>" required>
+                </div>
+                
+            </div>
+            <button type="submit" class="btn btn-success float-right">Update Player</button>
+        </form>
+    <% } else { %>
+        <p class="text-center">Player Not Found. Go <a href="/adde">here</a> to add players.</p>
+    <% } %>
+</div>
+</div>
+</body>
+</html>
